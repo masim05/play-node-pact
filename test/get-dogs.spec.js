@@ -52,7 +52,7 @@ describe("The Dog API", () => {
         willRespondWith: {
           status: 200,
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json; charset=utf-8",
           },
           body: EXPECTED_BODY,
         },
@@ -75,11 +75,9 @@ describe("The Dog API", () => {
   })
 
   describe("get /dog/1", () => {
-    const EXPECTED_BODY = [
-      {
-        dog: 1,
-      }
-    ]
+    const EXPECTED_BODY = {
+      dog: 1,
+    }
 
     before(done => {
       const interaction = {
@@ -95,7 +93,7 @@ describe("The Dog API", () => {
         willRespondWith: {
           status: 200,
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json; charset=utf-8",
           },
           body: EXPECTED_BODY,
         },
