@@ -2,7 +2,7 @@
   "name": "mochajs-pact-example",
   "version": "1.0.0",
   "description": "Mocha Pact example",
-  "main": "index.js",
+  "main": "src/consumer/index.js",
   "scripts": {
     "test": "rimraf pacts && mocha"
   },

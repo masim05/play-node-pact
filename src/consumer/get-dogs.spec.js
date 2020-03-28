@@ -3,7 +3,7 @@
 const expect = require("chai").expect
 const path = require("path")
 const { Pact } = require("@pact-foundation/pact")
-const { getMeDogs, getMeDog } = require("../index")
+const { getMeDogs, getMeDog } = require("./index")
 
 describe("The Dog API", () => {
   let url = "http://localhost"
@@ -11,8 +11,8 @@ describe("The Dog API", () => {
 
   const provider = new Pact({
     port: port,
-    log: path.resolve(process.cwd(), "logs", "mockserver-integration.log"),
-    dir: path.resolve(process.cwd(), "pacts"),
+    log: path.resolve(process.cwd(), "../../logs", "mockserver-integration.log"),
+    dir: path.resolve(process.cwd(), "../../pacts"),
     spec: 2,
     consumer: "MyConsumer",
     provider: "MyProvider",
