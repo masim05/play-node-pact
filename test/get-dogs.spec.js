@@ -19,15 +19,6 @@ describe("The Dog API", () => {
     pactfileWriteMode: "merge",
   })
 
-  const EXPECTED_BODY = [
-    {
-      dog: 1,
-    },
-    {
-      dog: 2,
-    },
-  ]
-
   // Setup the provider
   before(() => provider.setup())
 
@@ -38,6 +29,15 @@ describe("The Dog API", () => {
   afterEach(() => provider.verify())
 
   describe("get /dogs", () => {
+    const EXPECTED_BODY = [
+      {
+        dog: 1,
+      },
+      {
+        dog: 2,
+      },
+    ]
+
     before(done => {
       const interaction = {
         state: "i have a list of dogs",
@@ -75,6 +75,12 @@ describe("The Dog API", () => {
   })
 
   describe("get /dog/1", () => {
+    const EXPECTED_BODY = [
+      {
+        dog: 1,
+      }
+    ]
+
     before(done => {
       const interaction = {
         state: "i have a list of dogs",
