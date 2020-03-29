@@ -18,8 +18,9 @@ server.get('/dogs', (_, res) => {
   res.json(dataStore)
 })
 
-server.get('/dogs/1', (_, res) => {
-  res.json(dataStore[0])
+server.get('/dogs/:id', (req, res) => {
+  // Hack it for now
+  res.json(dataStore[req.params.id - 1])
 })
 
 module.exports = {
