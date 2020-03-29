@@ -12,11 +12,11 @@ describe("The Dog API", () => {
   const provider = new Pact({
     port: port,
     log: path.resolve(process.cwd(), "../../logs", "mockserver-integration.log"),
-    dir: path.resolve(process.cwd(), "../../pacts"),
+    dir: path.resolve(process.cwd(), "pacts"),
     spec: 2,
     consumer: "MyConsumer",
     provider: "MyProvider",
-    pactfileWriteMode: "merge",
+    pactfileWriteMode: "overwrite",
   })
 
   // Setup the provider
@@ -31,11 +31,15 @@ describe("The Dog API", () => {
   describe("get /dogs", () => {
     const EXPECTED_BODY = [
       {
-        dog: 1,
+        id: 1,
+        name: 'Cherry',
+        breed: 'pug'
       },
       {
-        dog: 2,
-      },
+        id: 2,
+        name: 'Bro',
+        breed: 'husky'
+      }
     ]
 
     before(done => {
@@ -62,13 +66,13 @@ describe("The Dog API", () => {
       })
     })
 
-    it("returns the correct response", done => {
+    it('returns proper name for the first dog', done => {
       const urlAndPort = {
         url: url,
         port: port,
       }
       getMeDogs(urlAndPort).then(response => {
-        expect(response.data).to.eql(EXPECTED_BODY)
+        expect(response.data[0].name).to.eql('Cherry')
         done()
       }, done)
     })
@@ -76,7 +80,9 @@ describe("The Dog API", () => {
 
   describe("get /dog/1", () => {
     const EXPECTED_BODY = {
-      dog: 1,
+      id: 1,
+      name: 'Cherry',
+      breed: 'pug'
     }
 
     before(done => {
@@ -103,13 +109,13 @@ describe("The Dog API", () => {
       })
     })
 
-    it("returns the correct response", done => {
+    it('returns proper name for the first dog', done => {
       const urlAndPort = {
         url: url,
         port: port,
       }
       getMeDog(urlAndPort).then(response => {
-        expect(response.data).to.eql(EXPECTED_BODY)
+        expect(response.data.name).to.eql('Cherry')
         done()
       }, done)
     })
