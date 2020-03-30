@@ -4,7 +4,8 @@
   "description": "Mocha Pact example",
   "main": "src/consumer/index.js",
   "scripts": {
-    "test": "rimraf pacts && mocha"
+    "test-consumer": "mocha --opts mocha.opts src/service-B-consumer/get-dogs.spec.js",
+    "test-provider": "mocha --opts mocha.opts src/service-A-provider/serve-dogs.spec.js"
   },
   "license": "MIT",
   "devDependencies": {

@@ -40,7 +40,7 @@ describe interactions with it. Pay attention to `dir` option, this is
 the place to store pactfile to.
 Run the test
 ```
-mocha src/service-B-consumer/get-dogs.spec.js
+npm run test-consumer
 ```  
 If pactfile `pacts/myconsumer-myprovider.json` wouldn't exist the command
 would create it.
@@ -49,13 +49,15 @@ would create it.
 Now we need to use the pactfile in order to test provider. We need to
 share the pactfile for this. There are several ways to do it, we will
 use the simpliest one: make `pactUrls` option to point to
-`pacts/myconsumer-myprovider.json`.
+`pacts/myconsumer-myprovider.json`. One can an also either self hosted
+pact broker or it's cloud version by setting `pactUrls`, `pactBrokerUrl`,
+`pactBrokerUsername` and `pactBrokerPassword` appropriately.
 ### Test provider against the pactfile
 `src/service-A-provider/serve-dogs.spec.js` is a provider spec. Take a
 look at `pactUrls`: it points to the file generated previously. Now we
 can run tests for the server as well:
 ```
-mocha src/service-A-provider/serve-dogs.spec.js
+npm run test-provider
 ```
 Passed!
 
